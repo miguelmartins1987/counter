@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Contador</string>
+    <string name="count_up">Contar para cima</string>
+    <string name="count_down">Contar para baixo</string>
+    <string name="initial_counter_text">0</string>
+</resources>
