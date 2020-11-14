@@ -4,23 +4,27 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.TextView
+import androidx.activity.viewModels
+import androidx.lifecycle.Observer
 
 class MainActivity : AppCompatActivity() {
-    private val counter = Counter(0)
+    private val counterViewModel: CounterViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        counterViewModel.counter.observe(
+            this,
+            { counter -> updateCounterText(counter.value) })
     }
 
     private fun onButtonCountUp() {
-        counter.increment()
-        updateCounterText(counter.value)
+        counterViewModel.increment()
     }
 
     private fun onButtonCountDown() {
-        counter.decrement()
-        updateCounterText(counter.value)
+        counterViewModel.decrement()
     }
 
     private fun updateCounterText(value: Int) {
